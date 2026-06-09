@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8f6f5;
+  --foreground: #3f3f3d;
+
+  --graphite: #6c6c6a;
+  --graphite-dark: #3f3f3d;
+  --graphite-light: #a3a3a0;
+
+  --lilac: #e8ccd8;
+  --lilac-light: #f5e8ed;
+  --lilac-dark: #cfa9ba;
+
+  --card: #ffffff;
+  --muted: #f0eeee;
+  --muted-foreground: #747471;
+  --border: #dedbd9;
+
+  --primary: #6c6c6a;
+  --primary-foreground: #ffffff;
+
+  --accent: #e8ccd8;
+  --accent-foreground: #3f3f3d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    linear-gradient(135deg, rgba(232, 204, 216, 0.28), transparent 34rem),
+    var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--lilac);
+  color: var(--graphite-dark);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

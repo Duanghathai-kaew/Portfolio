@@ -1,0 +1,120 @@
+import { ArrowRight, Braces, Frame, Ruler } from "lucide-react";
+import { SectionContainer } from "@/components/layout/section-container";
+import type { PortfolioMode } from "@/types/portfolio";
+import { cn } from "@/lib/utils";
+
+interface HeroSectionProps {
+  mode: PortfolioMode;
+}
+
+export function HeroSection({ mode }: HeroSectionProps) {
+  const isDesigner = mode === "designer";
+
+  return (
+    <SectionContainer id="top" className="pb-14 pt-12 sm:pt-16 lg:pb-20">
+      <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
+        <div>
+          <p className="inline-flex rounded-md border border-lilac-dark bg-lilac-light px-3 py-1.5 text-sm font-semibold text-graphite-dark">
+            Available for placeholder opportunities
+          </p>
+          <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.05] text-graphite-dark sm:text-6xl lg:text-7xl">
+            Designing thoughtful interfaces and building them into real products.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            A placeholder portfolio foundation for a hybrid UX/UI Designer and
+            Full-Stack Developer who connects user needs, interface systems, and
+            practical implementation.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#work"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-colors hover:bg-graphite-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
+            >
+              View Selected Work
+              <ArrowRight aria-hidden="true" className="h-4 w-4" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-lilac-dark hover:bg-lilac-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
+            >
+              Download Resume
+            </a>
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Resume file placeholder. Add the final document when content is ready.
+          </p>
+        </div>
+
+        <div
+          className={cn(
+            "relative min-h-[34rem] overflow-hidden rounded-lg border p-4 shadow-soft sm:p-6",
+            isDesigner
+              ? "border-lilac-dark bg-lilac-light"
+              : "border-graphite bg-graphite-dark text-primary-foreground"
+          )}
+          aria-label="Visual composition showing design and development interface elements"
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(108,108,106,0.16)_1px,transparent_1px),linear-gradient(to_bottom,rgba(108,108,106,0.16)_1px,transparent_1px)] bg-[size:32px_32px]" />
+          <div className="relative rounded-lg border border-border bg-card p-4 text-graphite-dark shadow-soft">
+            <div className="flex items-center justify-between border-b border-border pb-3">
+              <div className="flex gap-2">
+                <span className="h-3 w-3 rounded-full bg-lilac-dark" />
+                <span className="h-3 w-3 rounded-full bg-graphite-light" />
+                <span className="h-3 w-3 rounded-full bg-muted" />
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em]">
+                Product Canvas
+              </p>
+            </div>
+            <div className="mt-5 grid gap-4 sm:grid-cols-[0.8fr_1fr]">
+              <div className="rounded-md bg-muted p-4">
+                <Frame className="h-5 w-5 text-graphite" aria-hidden="true" />
+                <div className="mt-5 h-2 w-24 rounded-full bg-lilac-dark" />
+                <div className="mt-3 h-2 w-32 rounded-full bg-graphite-light" />
+                <div className="mt-3 h-16 rounded-md bg-card" />
+              </div>
+              <div className="rounded-md bg-graphite-dark p-4 font-mono text-xs text-lilac-light">
+                <p>type Mode = &quot;designer&quot; | &quot;developer&quot;;</p>
+                <p className="mt-3 text-lilac">const focus = mode.variant;</p>
+                <p className="mt-3 text-primary-foreground/80">
+                  render(ProductExperience);
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative mt-5 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-lg border border-border bg-background/92 p-4 text-graphite-dark shadow-sm">
+              <Ruler className="h-5 w-5 text-lilac-dark" aria-hidden="true" />
+              <p className="mt-4 text-sm font-semibold">Spacing System</p>
+              <div className="mt-4 flex items-end gap-2">
+                <span className="h-8 w-5 rounded-sm bg-lilac" />
+                <span className="h-14 w-5 rounded-sm bg-graphite" />
+                <span className="h-20 w-5 rounded-sm bg-lilac-dark" />
+              </div>
+            </div>
+            <div className="rounded-lg border border-lilac-dark/50 bg-graphite p-4 text-primary-foreground shadow-sm">
+              <Braces className="h-5 w-5 text-lilac" aria-hidden="true" />
+              <p className="mt-4 text-sm font-semibold">Component States</p>
+              <div className="mt-4 grid gap-2">
+                <span className="h-8 rounded-md bg-lilac text-graphite-dark" />
+                <span className="h-8 rounded-md border border-lilac-light/40" />
+              </div>
+            </div>
+          </div>
+
+          <div className="relative mt-5 rounded-lg border border-border bg-card p-4 text-graphite-dark shadow-sm">
+            <p className="text-sm font-semibold">
+              {isDesigner ? "Designer lens" : "Developer lens"}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              {isDesigner
+                ? "Editorial details, grid logic, and interface annotations are emphasized."
+                : "Structured surfaces, code details, and implementation states are emphasized."}
+            </p>
+          </div>
+        </div>
+      </div>
+    </SectionContainer>
+  );
+}
