@@ -41,7 +41,10 @@ export function CaseStudySection({
           {section.paragraphs && (
             <div className="mt-8 max-w-3xl space-y-5">
               {section.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="leading-8 text-muted-foreground">
+                <p
+                  key={paragraph}
+                  className="text-base leading-8 text-muted-foreground md:text-lg"
+                >
                   {paragraph}
                 </p>
               ))}
@@ -53,7 +56,7 @@ export function CaseStudySection({
               {section.bullets.map((item) => (
                 <li
                   key={item}
-                  className="border-t border-foreground/15 py-4 leading-7"
+                  className="border-t border-foreground/15 py-5 text-base leading-7"
                 >
                   {item}
                 </li>

@@ -33,9 +33,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       {project.goals && <CaseStudySection section={project.goals} />}
 
-      {project.role && (
-        <CaseStudySection section={project.role} tone="accent" />
-      )}
+      {project.role && <CaseStudySection section={project.role} />}
     </main>
   );
 }
