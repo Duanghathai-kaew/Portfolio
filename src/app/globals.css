@@ -82,6 +82,15 @@ samp {
   color: var(--graphite-dark);
 }
 
+@keyframes section-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

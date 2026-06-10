@@ -1,11 +1,21 @@
+"use client";
+
 import { ArrowUp } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { profile } from "@/data/profile";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <footer className="border-t border-border bg-graphite-dark text-primary-foreground">
+    <motion.footer
+      className="border-t border-border bg-graphite-dark text-primary-foreground"
+      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: shouldReduceMotion ? 0.2 : 0.42 }}
+    >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
         <div>
           <p className="font-heading text-base font-bold tracking-tight">{profile.name}</p>
@@ -24,6 +34,6 @@ export function Footer() {
           </a>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

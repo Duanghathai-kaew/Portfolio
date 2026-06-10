@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next/dist/types";
 import { Geist_Mono, Montserrat, Open_Sans } from "next/font/google";
 import "./globals.css";
 
