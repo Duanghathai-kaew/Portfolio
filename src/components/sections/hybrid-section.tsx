@@ -25,7 +25,7 @@ export function HybridSection({ mode }: HybridSectionProps) {
         <div>
           <p
             className={cn(
-              "text-sm font-semibold uppercase tracking-[0.18em]",
+              "font-mono text-xs font-medium uppercase tracking-[0.12em]",
               mode === "developer" ? "text-lilac" : "text-graphite"
             )}
           >
@@ -33,7 +33,7 @@ export function HybridSection({ mode }: HybridSectionProps) {
           </p>
           <h2
             className={cn(
-              "mt-3 text-3xl font-semibold leading-tight sm:text-4xl",
+              "mt-3 font-heading text-3xl font-bold leading-[1.1] tracking-[-0.035em] sm:text-4xl",
               mode === "developer" ? "text-primary-foreground" : "text-graphite-dark"
             )}
           >
@@ -50,7 +50,7 @@ export function HybridSection({ mode }: HybridSectionProps) {
         >
           <p
             className={cn(
-              "mt-4 text-base leading-7 sm:text-lg",
+              "mt-4 max-w-2xl font-sans text-base font-normal leading-7 sm:text-lg",
               mode === "developer" ? "text-lilac-light/80" : "text-muted-foreground"
             )}
           >
@@ -64,7 +64,7 @@ export function HybridSection({ mode }: HybridSectionProps) {
           >
             <span
               className={cn(
-                "font-semibold",
+                "font-sans font-semibold",
                 mode === "developer" ? "text-lilac" : "text-graphite"
               )}
             >
@@ -73,7 +73,7 @@ export function HybridSection({ mode }: HybridSectionProps) {
             <a
               href="#work"
               className={cn(
-                "inline-flex items-center gap-2 rounded-md font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
+                "inline-flex items-center gap-2 rounded-md font-sans font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
                 mode === "developer" ? "text-lilac-light" : "text-graphite-dark"
               )}
             >

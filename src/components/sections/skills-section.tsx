@@ -35,7 +35,7 @@ export function SkillsSection({ mode }: SkillsSectionProps) {
             >
               <h3
                 className={cn(
-                  "text-lg font-semibold text-graphite-dark",
+                  "font-heading text-lg font-bold leading-tight tracking-tight text-graphite-dark",
                   mode === "developer" &&
                     group.id === "frontend-product-development"
                     ? "text-primary-foreground"
@@ -46,7 +46,7 @@ export function SkillsSection({ mode }: SkillsSectionProps) {
               </h3>
               <p
                 className={cn(
-                  "mt-3 text-sm leading-6 text-muted-foreground",
+                  "mt-3 max-w-sm font-sans text-sm font-normal leading-6 text-muted-foreground",
                   mode === "developer" &&
                     group.id === "frontend-product-development"
                     ? "text-lilac-light/80"

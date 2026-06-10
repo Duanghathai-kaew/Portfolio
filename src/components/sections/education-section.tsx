@@ -18,21 +18,21 @@ export function EducationSection() {
             >
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <h3 className="text-xl font-semibold text-graphite-dark">
+                  <h3 className="font-heading text-xl font-bold leading-tight tracking-tight text-graphite-dark">
                     {item.degree}
                   </h3>
-                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-graphite">
+                  <p className="mt-2 font-sans text-xs font-semibold uppercase tracking-[0.08em] text-graphite">
                     {item.university}
                   </p>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  <p className="mt-1 font-sans text-sm font-normal text-muted-foreground">
                     {item.faculty}
                   </p>
                 </div>
-                <p className="text-sm font-semibold text-muted-foreground">
+                <p className="font-sans text-sm font-semibold text-muted-foreground">
                   {item.timeline}
                 </p>
               </div>
-              <p className="mt-4 text-sm leading-6 text-muted-foreground">
+              <p className="mt-4 max-w-2xl font-sans text-sm font-normal leading-6 text-muted-foreground">
                 {item.description}
               </p>
             </article>

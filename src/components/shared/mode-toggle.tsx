@@ -29,7 +29,7 @@ export function ModeToggle({ mode, onModeChange, className }: ModeToggleProps) {
             aria-pressed={isActive}
             onClick={() => onModeChange(option)}
             className={cn(
-              "min-h-9 rounded-md px-3 text-sm font-semibold capitalize transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
+              "min-h-9 rounded-md px-3 font-sans text-sm font-semibold capitalize transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
               isActive
                 ? mode === "designer"
                   ? "bg-lilac text-graphite-dark shadow-sm"

@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 :root {
+  --font-heading: "Montserrat", "Montserrat Fallback";
+  --font-sans: "Open Sans", "Open Sans Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+
   --background: #f8f6f5;
   --foreground: #3f3f3d;
 
@@ -35,12 +39,42 @@ html {
 }
 
 body {
+  --font-heading: var(--font-montserrat, "Montserrat", "Montserrat Fallback");
+  --font-sans: var(--font-open-sans, "Open Sans", "Open Sans Fallback");
+  --font-mono: var(--font-geist-mono, "Geist Mono", "Geist Mono Fallback");
+
   min-height: 100vh;
   overflow-x: hidden;
   background:
     linear-gradient(135deg, rgba(232, 204, 216, 0.28), transparent 34rem),
     var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading), var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 ::selection {

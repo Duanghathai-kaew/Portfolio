@@ -34,7 +34,7 @@ export function ProjectCard({ project, mode }: ProjectCardProps) {
           aria-hidden="true"
         >
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(108,108,106,0.13)_1px,transparent_1px),linear-gradient(to_bottom,rgba(108,108,106,0.13)_1px,transparent_1px)] bg-[size:26px_26px]" />
-          <div className="absolute left-5 top-5 flex items-center gap-2 rounded-md border border-border/70 bg-card/90 px-3 py-2 text-xs font-semibold text-graphite-dark shadow-sm">
+          <div className="absolute left-5 top-5 flex items-center gap-2 rounded-md border border-border/70 bg-card/90 px-3 py-2 font-mono text-xs font-medium tracking-[0.04em] text-graphite-dark shadow-sm">
             <Layers className="h-4 w-4 text-lilac-dark" />
             {mode === "designer" ? "Flow preview" : "Product structure"}
           </div>
@@ -66,18 +66,18 @@ export function ProjectCard({ project, mode }: ProjectCardProps) {
 
         <div className="flex flex-col justify-between gap-6">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-graphite">
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-graphite">
               {project.category}
             </p>
-            <h3 className="mt-3 text-2xl font-semibold text-graphite-dark">
+            <h3 className="mt-3 font-heading text-2xl font-bold leading-tight tracking-tight text-graphite-dark">
               {project.title}
             </h3>
-            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+            <p className="mt-3 max-w-2xl font-sans text-sm font-normal leading-6 text-muted-foreground">
               {project.description}
             </p>
           </div>
           <div className="space-y-4">
-            <p className="text-sm font-semibold text-graphite-dark">
+            <p className="font-sans text-sm font-semibold text-graphite-dark">
               {project.role}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -90,7 +90,7 @@ export function ProjectCard({ project, mode }: ProjectCardProps) {
             {project.ctaHref ? (
               <a
                 href={project.ctaHref}
-                className="inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-semibold text-graphite-dark transition-colors hover:text-graphite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
+                className="inline-flex min-h-11 items-center gap-2 rounded-md font-sans text-sm font-semibold text-graphite-dark transition-colors hover:text-graphite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
               >
                 {project.ctaLabel}
                 <ArrowUpRight
@@ -103,7 +103,7 @@ export function ProjectCard({ project, mode }: ProjectCardProps) {
                 type="button"
                 disabled
                 title={project.ctaPendingReason}
-                className="inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-semibold text-graphite-dark opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
+                className="inline-flex min-h-11 items-center gap-2 rounded-md font-sans text-sm font-semibold text-graphite-dark opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
               >
                 {project.ctaLabel}
                 <ArrowUpRight aria-hidden="true" className="h-4 w-4" />

@@ -23,7 +23,7 @@ export function ContactSection({ mode }: ContactSectionProps) {
           <div>
             <p
               className={cn(
-                "text-sm font-semibold uppercase tracking-[0.18em]",
+                "font-mono text-xs font-medium uppercase tracking-[0.12em]",
                 mode === "developer" ? "text-lilac" : "text-graphite"
               )}
             >
@@ -31,7 +31,7 @@ export function ContactSection({ mode }: ContactSectionProps) {
             </p>
             <h2
               className={cn(
-                "mt-3 max-w-3xl text-3xl font-semibold leading-tight sm:text-5xl",
+                "mt-3 max-w-3xl font-heading text-3xl font-bold leading-[1.1] tracking-[-0.035em] sm:text-5xl",
                 mode === "developer" ? "text-primary-foreground" : "text-graphite-dark"
               )}
             >
@@ -39,7 +39,7 @@ export function ContactSection({ mode }: ContactSectionProps) {
             </h2>
             <p
               className={cn(
-                "mt-5 max-w-2xl text-base leading-7 sm:text-lg",
+                "mt-5 max-w-2xl font-sans text-base font-normal leading-7 sm:text-lg",
                 mode === "developer" ? "text-lilac-light/80" : "text-muted-foreground"
               )}
             >
@@ -47,7 +47,7 @@ export function ContactSection({ mode }: ContactSectionProps) {
             </p>
             <dl
               className={cn(
-                "mt-6 grid gap-3 text-sm sm:grid-cols-3",
+                "mt-6 grid gap-3 font-sans text-sm font-normal leading-6 sm:grid-cols-3",
                 mode === "developer" ? "text-lilac-light/80" : "text-muted-foreground"
               )}
             >
@@ -78,7 +78,7 @@ export function ContactSection({ mode }: ContactSectionProps) {
             <a
               href={`mailto:${profile.email}`}
               className={cn(
-                "inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
+                "inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 py-2.5 font-sans text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
                 mode === "developer"
                   ? "bg-lilac text-graphite-dark hover:bg-lilac-light"
                   : "bg-primary text-primary-foreground hover:bg-graphite-dark"
@@ -92,7 +92,7 @@ export function ContactSection({ mode }: ContactSectionProps) {
               disabled
               title={profile.linkedIn.pendingReason}
               className={cn(
-                "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border px-5 py-2.5 text-sm font-semibold opacity-60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed",
+                "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border px-5 py-2.5 font-sans text-sm font-semibold opacity-60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed",
                 mode === "developer"
                   ? "border-lilac-light/40 text-lilac-light hover:bg-lilac-light hover:text-graphite-dark"
                   : "border-border bg-card text-foreground hover:border-lilac-dark hover:bg-card"

@@ -13,10 +13,7 @@ export function ProcessSection({ mode }: ProcessSectionProps) {
   return (
     <SectionContainer id="process">
       <div className="space-y-12">
-        <SectionHeading
-          eyebrow="HOW I WORK"
-          title={processIntro}
-        />
+        <SectionHeading eyebrow="HOW I WORK" title={processIntro} />
         <div className="relative grid gap-5 lg:grid-cols-4">
           <div
             className="absolute left-8 top-10 hidden h-px w-[calc(100%-4rem)] bg-border lg:block"
@@ -34,6 +31,7 @@ export function ProcessSection({ mode }: ProcessSectionProps) {
                   <span
                     className={cn(
                       "inline-flex h-12 w-12 items-center justify-center rounded-md text-sm font-bold",
+                      "font-heading",
                       mode === "designer"
                         ? "bg-lilac text-graphite-dark"
                         : "bg-graphite text-primary-foreground"
@@ -46,10 +44,10 @@ export function ProcessSection({ mode }: ProcessSectionProps) {
                     className="h-5 w-5 text-lilac-dark"
                   />
                 </div>
-                <h3 className="mt-6 text-lg font-semibold text-graphite-dark">
+                <h3 className="mt-6 font-heading text-lg font-bold leading-tight tracking-tight text-graphite-dark">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                <p className="mt-3 max-w-sm font-sans text-sm font-normal leading-6 text-muted-foreground">
                   {step.description}
                 </p>
               </div>

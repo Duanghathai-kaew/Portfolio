@@ -24,7 +24,7 @@ export function Navbar({ mode, onModeChange }: NavbarProps) {
       >
         <a
           href="#top"
-          className="rounded-md text-sm font-bold uppercase tracking-[0.22em] text-graphite-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lilac-dark"
+          className="rounded-md font-heading text-base font-bold tracking-[-0.01em] text-graphite-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lilac-dark"
         >
           {profile.shortName}
         </a>
@@ -34,7 +34,7 @@ export function Navbar({ mode, onModeChange }: NavbarProps) {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-semibold text-muted-foreground transition-colors hover:text-graphite-dark focus-visible:rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lilac-dark"
+              className="font-sans text-sm font-medium text-muted-foreground transition-colors hover:text-graphite-dark focus-visible:rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lilac-dark"
             >
               {item.label}
             </a>
@@ -47,7 +47,7 @@ export function Navbar({ mode, onModeChange }: NavbarProps) {
             type="button"
             disabled
             title={profile.resume.pendingReason}
-            className="inline-flex min-h-11 items-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
+            className="inline-flex min-h-11 items-center rounded-md bg-primary px-4 py-2 font-sans text-sm font-semibold text-primary-foreground opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
           >
             Resume
           </button>
@@ -81,7 +81,7 @@ export function Navbar({ mode, onModeChange }: NavbarProps) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="rounded-md px-2 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
+                className="rounded-md px-2 py-3 font-sans text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
               >
                 {item.label}
               </a>
@@ -93,7 +93,7 @@ export function Navbar({ mode, onModeChange }: NavbarProps) {
               type="button"
               disabled
               title={profile.resume.pendingReason}
-              className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
+              className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 py-2 font-sans text-sm font-semibold text-primary-foreground opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
             >
               Resume
             </button>
