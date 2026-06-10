@@ -1,10 +1,15 @@
 "use client";
 
-import type { PointerEvent } from "react";
-import { useEffect, useState } from "react";
-import { motion, type HTMLMotionProps, useMotionValue, useSpring } from "framer-motion";
 import { useReducedMotionPreference } from "@/hooks/use-reduced-motion-preference";
 import { cn } from "@/lib/utils";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  type HTMLMotionProps,
+} from "framer-motion";
+import type { PointerEvent } from "react";
+import { useEffect, useState } from "react";
 
 interface MagneticButtonProps extends HTMLMotionProps<"a"> {
   strength?: number;
@@ -24,7 +29,9 @@ export function MagneticButton({
   const y = useSpring(useMotionValue(0), { stiffness: 260, damping: 22 });
 
   useEffect(() => {
-    const query = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const query = window.matchMedia(
+      "(min-width: 1024px) and (hover: hover) and (pointer: fine)",
+    );
     const updatePointer = () => {
       setSupportsFinePointer(query.matches);
     };

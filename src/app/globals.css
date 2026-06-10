@@ -102,3 +102,36 @@ samp {
     animation-iteration-count: 1 !important;
   }
 }
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  [data-motion],
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .sticky {
+    position: static !important;
+  }
+
+  section {
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  article,
+  .rounded-lg,
+  .shadow-soft,
+  .shadow-sm {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

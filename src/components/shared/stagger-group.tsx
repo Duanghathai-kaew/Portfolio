@@ -9,12 +9,12 @@ interface StaggerGroupProps extends HTMLMotionProps<"div"> {
 }
 
 export const staggerItemVariants: Variants = {
-  hidden: { opacity: 0, y: 14 },
+  hidden: { opacity: 1, y: 0 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] }
-  }
+    transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 export function StaggerGroup({
@@ -27,16 +27,17 @@ export function StaggerGroup({
 
   return (
     <motion.div
-      initial="hidden"
+      data-motion
+      data-reveal
+      initial={false}
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
       variants={{
-        hidden: {},
         visible: {
           transition: shouldReduceMotion
             ? { staggerChildren: 0, delayChildren: 0 }
-            : { staggerChildren, delayChildren }
-        }
+            : { staggerChildren, delayChildren },
+        },
       }}
       {...props}
     >

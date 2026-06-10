@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState, type KeyboardEvent } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { SectionContainer } from "@/components/layout/section-container";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { SkillBadge } from "@/components/shared/skill-badge";
 import { getOrderedSkillGroups } from "@/data/skills";
-import type { PortfolioMode, SkillGroupId } from "@/types/portfolio";
 import { cn } from "@/lib/utils";
+import type { PortfolioMode, SkillGroupId } from "@/types/portfolio";
+import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState, type KeyboardEvent } from "react";
 
 interface SkillsSectionProps {
   mode: PortfolioMode;
@@ -16,9 +16,9 @@ interface SkillsSectionProps {
 export function SkillsSection({ mode }: SkillsSectionProps) {
   const orderedGroups = getOrderedSkillGroups(mode);
   const shouldReduceMotion = useReducedMotion();
-  const defaultActiveId: SkillGroupId =
-    mode === "designer" ? "ux-product-design" : "frontend-product-development";
-  const [activeGroupId, setActiveGroupId] = useState<SkillGroupId>(defaultActiveId);
+  const defaultActiveId: SkillGroupId = orderedGroups[0].id;
+  const [activeGroupId, setActiveGroupId] =
+    useState<SkillGroupId>(defaultActiveId);
 
   useEffect(() => {
     setActiveGroupId(defaultActiveId);
@@ -26,7 +26,7 @@ export function SkillsSection({ mode }: SkillsSectionProps) {
 
   const handleKeyDown = (
     event: KeyboardEvent<HTMLElement>,
-    groupId: SkillGroupId
+    groupId: SkillGroupId,
   ) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
@@ -43,7 +43,7 @@ export function SkillsSection({ mode }: SkillsSectionProps) {
           description="A concise view of the capabilities I use to connect product thinking, interface design, and practical development."
         />
 
-        <div className="hidden gap-4 lg:flex">
+        <div className="hidden gap-4 lg:grid lg:grid-cols-3">
           {orderedGroups.map((group) => (
             <motion.article
               key={group.id}
@@ -55,21 +55,20 @@ export function SkillsSection({ mode }: SkillsSectionProps) {
               onClick={() => setActiveGroupId(group.id)}
               onKeyDown={(event) => handleKeyDown(event, group.id)}
               className={cn(
-                "min-h-[26rem] cursor-default rounded-lg border p-6 shadow-sm transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
+                "rounded-lg border p-6 shadow-sm transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
                 activeGroupId === group.id
                   ? "border-graphite bg-graphite-dark text-primary-foreground"
-                  : "border-border bg-card text-foreground"
+                  : "border-border bg-card text-foreground",
               )}
               animate={{
-                flex: activeGroupId === group.id ? 1.22 : 0.9,
-                y: activeGroupId === group.id && !shouldReduceMotion ? -4 : 0
+                y: activeGroupId === group.id && !shouldReduceMotion ? -4 : 0,
               }}
               transition={{ duration: shouldReduceMotion ? 0.15 : 0.36 }}
             >
               <p
                 className={cn(
                   "font-mono text-xs font-semibold uppercase tracking-[0.12em]",
-                  activeGroupId === group.id ? "text-lilac" : "text-graphite"
+                  activeGroupId === group.id ? "text-lilac" : "text-graphite",
                 )}
               >
                 Capability
@@ -77,9 +76,7 @@ export function SkillsSection({ mode }: SkillsSectionProps) {
               <h3
                 className={cn(
                   "mt-5 font-heading text-2xl font-bold leading-tight tracking-tight text-graphite-dark",
-                  activeGroupId === group.id
-                    ? "text-primary-foreground"
-                    : ""
+                  activeGroupId === group.id ? "text-primary-foreground" : "",
                 )}
               >
                 {group.title}
@@ -87,44 +84,42 @@ export function SkillsSection({ mode }: SkillsSectionProps) {
               <p
                 className={cn(
                   "mt-4 max-w-sm font-sans text-sm font-normal leading-6 text-muted-foreground",
-                  activeGroupId === group.id
-                    ? "text-lilac-light/80"
-                    : ""
+                  activeGroupId === group.id ? "text-lilac-light/80" : "",
                 )}
               >
                 {group.description}
               </p>
-              <AnimatePresence initial={false}>
-                {activeGroupId === group.id ? (
-                  <motion.div
-                    className="mt-8 flex flex-wrap gap-2"
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                    variants={{
-                      hidden: {},
-                      visible: {
-                        transition: {
-                          staggerChildren: shouldReduceMotion ? 0 : 0.045
-                        }
-                      }
+              <motion.div
+                className="mt-8 flex flex-wrap gap-2"
+                initial={false}
+                animate={
+                  activeGroupId === group.id && !shouldReduceMotion
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 1, y: 0 }
+                }
+                transition={{ duration: shouldReduceMotion ? 0.01 : 0.24 }}
+              >
+                {group.skills.map((skill, index) => (
+                  <motion.span
+                    key={skill}
+                    initial={false}
+                    whileInView={
+                      shouldReduceMotion
+                        ? undefined
+                        : { opacity: [0.98, 1], y: [6, 0] }
+                    }
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{
+                      duration: shouldReduceMotion ? 0.01 : 0.24,
+                      delay: index * 0.02,
                     }}
+                    data-motion
+                    data-reveal
                   >
-                    {group.skills.map((skill) => (
-                      <motion.span
-                        key={skill}
-                        variants={{
-                          hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 8 },
-                          visible: { opacity: 1, y: 0 }
-                        }}
-                        transition={{ duration: 0.28 }}
-                      >
-                        <SkillBadge label={skill} />
-                      </motion.span>
-                    ))}
-                  </motion.div>
-                ) : null}
-              </AnimatePresence>
+                    <SkillBadge label={skill} />
+                  </motion.span>
+                ))}
+              </motion.div>
             </motion.article>
           ))}
         </div>
@@ -151,26 +146,29 @@ export function SkillsSection({ mode }: SkillsSectionProps) {
                     {isExpanded ? "Open" : "View"}
                   </span>
                 </button>
-                <AnimatePresence initial={false}>
-                  {isExpanded ? (
-                    <motion.div
-                      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
-                      transition={{ duration: shouldReduceMotion ? 0.15 : 0.28 }}
-                      className="px-5 pb-5"
-                    >
-                      <p className="max-w-sm font-sans text-sm leading-6 text-muted-foreground">
-                        {group.description}
-                      </p>
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {group.skills.map((skill) => (
-                          <SkillBadge key={skill} label={skill} />
-                        ))}
-                      </div>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
+                {isExpanded ? (
+                  <motion.div
+                    className="px-5 pb-5"
+                    initial={false}
+                    animate={
+                      shouldReduceMotion
+                        ? undefined
+                        : { opacity: [0.98, 1], y: [4, 0] }
+                    }
+                    transition={{ duration: shouldReduceMotion ? 0.01 : 0.2 }}
+                    data-motion
+                    data-reveal
+                  >
+                    <p className="max-w-sm font-sans text-sm leading-6 text-muted-foreground">
+                      {group.description}
+                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {group.skills.map((skill) => (
+                        <SkillBadge key={skill} label={skill} />
+                      ))}
+                    </div>
+                  </motion.div>
+                ) : null}
               </article>
             );
           })}
