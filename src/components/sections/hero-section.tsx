@@ -1,5 +1,6 @@
 import { ArrowRight, Braces, Frame, Ruler } from "lucide-react";
 import { SectionContainer } from "@/components/layout/section-container";
+import { profile } from "@/data/profile";
 import type { PortfolioMode } from "@/types/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -14,34 +15,34 @@ export function HeroSection({ mode }: HeroSectionProps) {
     <SectionContainer id="top" className="pb-14 pt-12 sm:pt-16 lg:pb-20">
       <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
         <div>
-          <p className="inline-flex rounded-md border border-lilac-dark bg-lilac-light px-3 py-1.5 text-sm font-semibold text-graphite-dark">
-            Available for placeholder opportunities
+          <p className="inline-block max-w-full rounded-md border border-lilac-dark bg-lilac-light px-3 py-1.5 text-sm font-semibold leading-6 text-graphite-dark">
+            {profile.hero.eyebrow}
           </p>
           <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.05] text-graphite-dark sm:text-6xl lg:text-7xl">
-            Designing thoughtful interfaces and building them into real products.
+            {profile.hero.headline}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-            A placeholder portfolio foundation for a hybrid UX/UI Designer and
-            Full-Stack Developer who connects user needs, interface systems, and
-            practical implementation.
+            {profile.hero.description}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="#work"
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition-colors hover:bg-graphite-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
             >
-              View Selected Work
+              {profile.hero.primaryCtaLabel}
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </a>
-            <a
-              href="#contact"
-              className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-lilac-dark hover:bg-lilac-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
+            <button
+              type="button"
+              disabled
+              title={profile.resume.pendingReason}
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground opacity-60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
             >
-              Download Resume
-            </a>
+              {profile.hero.secondaryCtaLabel}
+            </button>
           </div>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Resume file placeholder. Add the final document when content is ready.
+          <p className="mt-4 text-sm font-medium text-graphite">
+            {profile.availability}
           </p>
         </div>
 

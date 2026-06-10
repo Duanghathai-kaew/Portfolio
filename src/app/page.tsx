@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ContactSection } from "@/components/sections/contact-section";
+import { EducationSection } from "@/components/sections/education-section";
 import { ExperienceSection } from "@/components/sections/experience-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { HybridSection } from "@/components/sections/hybrid-section";
@@ -16,15 +17,16 @@ export default function Home() {
   const [mode, setMode] = useState<PortfolioMode>("designer");
 
   return (
-    <div data-mode={mode} className="min-h-screen overflow-x-hidden">
+    <div data-mode={mode} className="min-h-screen">
       <Navbar mode={mode} onModeChange={setMode} />
       <main>
         <HeroSection mode={mode} />
         <ProjectsSection mode={mode} />
         <HybridSection mode={mode} />
-        <ProcessSection mode={mode} />
         <SkillsSection mode={mode} />
+        <ProcessSection mode={mode} />
         <ExperienceSection />
+        <EducationSection />
         <ContactSection mode={mode} />
       </main>
       <Footer />

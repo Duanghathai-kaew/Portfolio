@@ -2,51 +2,48 @@ import type { PortfolioMode, SkillGroup } from "@/types/portfolio";
 
 export const skillGroups: SkillGroup[] = [
   {
-    id: "product-ux",
-    title: "Product and UX",
-    description: "Placeholder skills for understanding user needs and shaping product direction.",
-    skills: ["User Flows", "Information Architecture", "Journey Mapping", "Usability Review"]
+    id: "ux-product-design",
+    title: "UX & Product Design",
+    description: "Research, structure, and flow work for clear product experiences.",
+    skills: [
+      "User Research",
+      "Information Architecture",
+      "User Flows",
+      "Wireframing",
+      "Prototyping",
+      "Usability Testing"
+    ]
   },
   {
-    id: "interface-design",
-    title: "Interface Design",
-    description: "Placeholder skills for creating structured, accessible, and polished interfaces.",
-    skills: ["Wireframes", "Design Systems", "Responsive Layouts", "Interaction States"]
+    id: "ui-design-systems",
+    title: "UI & Design Systems",
+    description: "Interface details and reusable systems for consistent handoff.",
+    skills: [
+      "Responsive Design",
+      "Visual Hierarchy",
+      "Component Design",
+      "Design Systems",
+      "Developer Handoff"
+    ]
   },
   {
-    id: "frontend",
-    title: "Frontend",
-    description: "Placeholder skills for building typed and reusable frontend experiences.",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"]
-  },
-  {
-    id: "backend-data",
-    title: "Backend and Data",
-    description: "Placeholder skills for connecting interfaces to practical data workflows.",
-    skills: ["API Design", "Database Basics", "Validation", "Data Modeling"]
-  },
-  {
-    id: "tools-collaboration",
-    title: "Tools and Collaboration",
-    description: "Placeholder skills for moving from idea to implementation with a team.",
-    skills: ["Figma", "Git", "Documentation", "Handoff"]
+    id: "frontend-product-development",
+    title: "Frontend & Product Development",
+    description: "Technical foundations for implementation-ready digital products.",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL"]
   }
 ];
 
-const designerOrder = [
-  "product-ux",
-  "interface-design",
-  "tools-collaboration",
-  "frontend",
-  "backend-data"
+const designerOrder: SkillGroup["id"][] = [
+  "ux-product-design",
+  "ui-design-systems",
+  "frontend-product-development"
 ];
 
-const developerOrder = [
-  "frontend",
-  "backend-data",
-  "tools-collaboration",
-  "interface-design",
-  "product-ux"
+const developerOrder: SkillGroup["id"][] = [
+  "frontend-product-development",
+  "ux-product-design",
+  "ui-design-systems"
 ];
 
 export function getOrderedSkillGroups(mode: PortfolioMode) {

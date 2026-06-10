@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio Placeholder",
+  title: "Duanghathai Mekkhala Portfolio",
   description:
-    "Placeholder portfolio for a hybrid UX/UI Designer and Full-Stack Developer."
+    "UX/UI Designer with a Computer Science and full-stack development background."
 };
 
 export default function RootLayout({

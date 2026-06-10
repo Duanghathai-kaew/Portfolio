@@ -10,9 +10,6 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, mode }: ProjectCardProps) {
-  const emphasis =
-    mode === "designer" ? project.designerEmphasis : project.developerEmphasis;
-
   return (
     <Card
       className={cn(
@@ -29,6 +26,7 @@ export function ProjectCard({ project, mode }: ProjectCardProps) {
         <div
           className={cn(
             "relative min-h-64 overflow-hidden rounded-md border border-border",
+            project.featured ? "lg:min-h-80" : "",
             mode === "designer"
               ? "bg-lilac-light"
               : "bg-graphite-dark text-primary-foreground"
@@ -38,7 +36,7 @@ export function ProjectCard({ project, mode }: ProjectCardProps) {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(108,108,106,0.13)_1px,transparent_1px),linear-gradient(to_bottom,rgba(108,108,106,0.13)_1px,transparent_1px)] bg-[size:26px_26px]" />
           <div className="absolute left-5 top-5 flex items-center gap-2 rounded-md border border-border/70 bg-card/90 px-3 py-2 text-xs font-semibold text-graphite-dark shadow-sm">
             <Layers className="h-4 w-4 text-lilac-dark" />
-            Component Preview
+            {mode === "designer" ? "Flow preview" : "Product structure"}
           </div>
           <div className="absolute bottom-6 left-5 right-5 rounded-lg border border-border/80 bg-card p-4 text-graphite-dark shadow-soft">
             <div className="flex items-center justify-between gap-4">
@@ -77,9 +75,6 @@ export function ProjectCard({ project, mode }: ProjectCardProps) {
             <p className="mt-3 text-sm leading-6 text-muted-foreground">
               {project.description}
             </p>
-            <p className="mt-4 rounded-md border border-border bg-muted p-3 text-sm leading-6 text-foreground">
-              {emphasis}
-            </p>
           </div>
           <div className="space-y-4">
             <p className="text-sm font-semibold text-graphite-dark">
@@ -92,16 +87,28 @@ export function ProjectCard({ project, mode }: ProjectCardProps) {
                 </Badge>
               ))}
             </div>
-            <a
-              href="#contact"
-              className="inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-semibold text-graphite-dark transition-colors hover:text-graphite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
-            >
-              View Case Study
-              <ArrowUpRight
-                aria-hidden="true"
-                className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-              />
-            </a>
+            {project.ctaHref ? (
+              <a
+                href={project.ctaHref}
+                className="inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-semibold text-graphite-dark transition-colors hover:text-graphite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
+              >
+                {project.ctaLabel}
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
+              </a>
+            ) : (
+              <button
+                type="button"
+                disabled
+                title={project.ctaPendingReason}
+                className="inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-semibold text-graphite-dark opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
+              >
+                {project.ctaLabel}
+                <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+              </button>
+            )}
           </div>
         </div>
       </div>

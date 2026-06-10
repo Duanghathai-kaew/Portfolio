@@ -1,6 +1,6 @@
 # Portfolio
 
-Initial frontend UI for a modern personal portfolio website positioning the owner as a hybrid UX/UI Designer and Full-Stack Developer.
+Frontend UI for Duanghathai Mekkhala's personal portfolio, positioning her as a UX/UI Designer with a Computer Science and full-stack development background.
 
 ## Commands
 
@@ -11,4 +11,4 @@ npm run typecheck
 npm run build
 ```
 
-The current version uses placeholder-only content and does not include a backend, database, authentication, analytics, external API integration, or functional contact form submission.
+The current version is a static portfolio homepage and does not include a backend, database, authentication, analytics, external API integration, or functional contact form submission.

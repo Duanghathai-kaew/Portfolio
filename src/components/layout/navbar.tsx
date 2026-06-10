@@ -3,6 +3,7 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { navigationItems } from "@/data/navigation";
+import { profile } from "@/data/profile";
 import { ModeToggle } from "@/components/shared/mode-toggle";
 import type { PortfolioMode } from "@/types/portfolio";
 import { cn } from "@/lib/utils";
@@ -25,7 +26,7 @@ export function Navbar({ mode, onModeChange }: NavbarProps) {
           href="#top"
           className="rounded-md text-sm font-bold uppercase tracking-[0.22em] text-graphite-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lilac-dark"
         >
-          Name Placeholder
+          {profile.shortName}
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">
@@ -42,12 +43,14 @@ export function Navbar({ mode, onModeChange }: NavbarProps) {
 
         <div className="hidden items-center gap-3 lg:flex">
           <ModeToggle mode={mode} onModeChange={onModeChange} />
-          <a
-            href="#contact"
-            className="inline-flex min-h-11 items-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-graphite-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
+          <button
+            type="button"
+            disabled
+            title={profile.resume.pendingReason}
+            className="inline-flex min-h-11 items-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
           >
             Resume
-          </a>
+          </button>
         </div>
 
         <button
@@ -86,13 +89,14 @@ export function Navbar({ mode, onModeChange }: NavbarProps) {
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <ModeToggle mode={mode} onModeChange={onModeChange} />
-            <a
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-graphite-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark"
+            <button
+              type="button"
+              disabled
+              title={profile.resume.pendingReason}
+              className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
             >
               Resume
-            </a>
+            </button>
           </div>
         </div>
       </div>

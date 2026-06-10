@@ -10,19 +10,18 @@ export interface Project {
   category: string;
   title: string;
   description: string;
-  designerEmphasis: string;
-  developerEmphasis: string;
   role: string;
   technologies: string[];
+  ctaLabel: string;
+  ctaHref?: string;
+  ctaPendingReason?: string;
   featured?: boolean;
 }
 
 export type SkillGroupId =
-  | "product-ux"
-  | "interface-design"
-  | "frontend"
-  | "backend-data"
-  | "tools-collaboration";
+  | "ux-product-design"
+  | "ui-design-systems"
+  | "frontend-product-development";
 
 export interface SkillGroup {
   id: SkillGroupId;
@@ -37,5 +36,19 @@ export interface ExperienceItem {
   role: string;
   timeline: string;
   description: string;
-  tags: string[];
+}
+
+export interface ProcessStep {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export interface EducationItem {
+  id: string;
+  degree: string;
+  university: string;
+  faculty: string;
+  timeline: string;
+  description: string;
 }

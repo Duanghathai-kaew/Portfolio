@@ -17,7 +17,7 @@ export function SocialLink({
   return (
     <a
       href={href}
-      aria-label={`${label} placeholder link`}
+      aria-label={label}
       className={cn(
         "inline-flex min-h-11 items-center gap-2 rounded-md border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-lilac-dark hover:bg-lilac-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
         className

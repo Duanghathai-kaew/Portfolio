@@ -1,6 +1,6 @@
-import { ExternalLink, GitBranch, Mail } from "lucide-react";
+import { ExternalLink, Mail, MapPin, User } from "lucide-react";
 import { SectionContainer } from "@/components/layout/section-container";
-import { SocialLink } from "@/components/shared/social-link";
+import { profile } from "@/data/profile";
 import type { PortfolioMode } from "@/types/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +27,7 @@ export function ContactSection({ mode }: ContactSectionProps) {
                 mode === "developer" ? "text-lilac" : "text-graphite"
               )}
             >
-              Contact
+              {profile.contact.eyebrow}
             </p>
             <h2
               className={cn(
@@ -35,7 +35,7 @@ export function ContactSection({ mode }: ContactSectionProps) {
                 mode === "developer" ? "text-primary-foreground" : "text-graphite-dark"
               )}
             >
-              Build useful digital products with thoughtful design and practical code.
+              {profile.contact.headline}
             </h2>
             <p
               className={cn(
@@ -43,13 +43,40 @@ export function ContactSection({ mode }: ContactSectionProps) {
                 mode === "developer" ? "text-lilac-light/80" : "text-muted-foreground"
               )}
             >
-              Placeholder contact copy for future email, resume, and profile links.
-              No form submission or backend is included in this version.
+              {profile.contact.description}
             </p>
+            <dl
+              className={cn(
+                "mt-6 grid gap-3 text-sm sm:grid-cols-3",
+                mode === "developer" ? "text-lilac-light/80" : "text-muted-foreground"
+              )}
+            >
+              <div className="flex items-center gap-2">
+                <User aria-hidden="true" className="h-4 w-4 shrink-0" />
+                <div>
+                  <dt className="sr-only">Name</dt>
+                  <dd>{profile.name}</dd>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin aria-hidden="true" className="h-4 w-4 shrink-0" />
+                <div>
+                  <dt className="sr-only">Location</dt>
+                  <dd>{profile.location}</dd>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail aria-hidden="true" className="h-4 w-4 shrink-0" />
+                <div>
+                  <dt className="sr-only">Email</dt>
+                  <dd>{profile.email}</dd>
+                </div>
+              </div>
+            </dl>
           </div>
           <div className="flex flex-col gap-3">
             <a
-              href="mailto:placeholder@example.com"
+              href={`mailto:${profile.email}`}
               className={cn(
                 "inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
                 mode === "developer"
@@ -58,33 +85,22 @@ export function ContactSection({ mode }: ContactSectionProps) {
               )}
             >
               <Mail aria-hidden="true" className="h-4 w-4" />
-              Email Placeholder
+              {profile.contact.primaryCtaLabel}
             </a>
-            <a
-              href="#contact"
+            <button
+              type="button"
+              disabled
+              title={profile.linkedIn.pendingReason}
               className={cn(
-                "inline-flex min-h-11 items-center justify-center rounded-md border px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
+                "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border px-5 py-2.5 text-sm font-semibold opacity-60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed",
                 mode === "developer"
                   ? "border-lilac-light/40 text-lilac-light hover:bg-lilac-light hover:text-graphite-dark"
                   : "border-border bg-card text-foreground hover:border-lilac-dark hover:bg-card"
               )}
             >
-              Resume Placeholder
-            </a>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <SocialLink
-                href="#contact"
-                label="LinkedIn"
-                icon={ExternalLink}
-                className={mode === "developer" ? "border-lilac-light/30" : ""}
-              />
-              <SocialLink
-                href="#contact"
-                label="GitHub"
-                icon={GitBranch}
-                className={mode === "developer" ? "border-lilac-light/30" : ""}
-              />
-            </div>
+              <ExternalLink aria-hidden="true" className="h-4 w-4" />
+              {profile.linkedIn.label}
+            </button>
           </div>
         </div>
       </div>

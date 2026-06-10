@@ -1,33 +1,12 @@
-import { Code2, LayoutPanelTop, Workflow } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { SectionContainer } from "@/components/layout/section-container";
-import { Card } from "@/components/ui/card";
+import { profile } from "@/data/profile";
 import type { PortfolioMode } from "@/types/portfolio";
 import { cn } from "@/lib/utils";
 
 interface HybridSectionProps {
   mode: PortfolioMode;
 }
-
-const values = [
-  {
-    title: "Product Thinking",
-    description:
-      "Placeholder explanation for connecting user needs, business context, and interface direction.",
-    icon: Workflow
-  },
-  {
-    title: "Feasible Design",
-    description:
-      "Placeholder explanation for shaping ideas around constraints, states, and practical delivery.",
-    icon: LayoutPanelTop
-  },
-  {
-    title: "Implementation Awareness",
-    description:
-      "Placeholder explanation for translating decisions into maintainable frontend systems.",
-    icon: Code2
-  }
-];
 
 export function HybridSection({ mode }: HybridSectionProps) {
   return (
@@ -39,7 +18,7 @@ export function HybridSection({ mode }: HybridSectionProps) {
     >
       <div
         className={cn(
-          "grid gap-8 lg:grid-cols-[0.85fr_1.15fr]",
+          "grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end",
           mode === "developer" ? "text-primary-foreground" : ""
         )}
       >
@@ -50,7 +29,7 @@ export function HybridSection({ mode }: HybridSectionProps) {
               mode === "developer" ? "text-lilac" : "text-graphite"
             )}
           >
-            Hybrid Value
+            {profile.about.eyebrow}
           </p>
           <h2
             className={cn(
@@ -58,50 +37,50 @@ export function HybridSection({ mode }: HybridSectionProps) {
               mode === "developer" ? "text-primary-foreground" : "text-graphite-dark"
             )}
           >
-            Design decisions with implementation reality built in.
+            {profile.about.headline}
           </h2>
+        </div>
+        <div
+          className={cn(
+            "rounded-lg border p-6 shadow-sm sm:p-8",
+            mode === "developer"
+              ? "border-lilac-light/20 bg-primary-foreground/10"
+              : "border-lilac-dark/50 bg-card"
+          )}
+        >
           <p
             className={cn(
               "mt-4 text-base leading-7 sm:text-lg",
               mode === "developer" ? "text-lilac-light/80" : "text-muted-foreground"
             )}
           >
-            This section is a placeholder for explaining why design and development
-            experience can make product work clearer, faster to discuss, and easier
-            to ship.
+            {profile.about.body}
           </p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {values.map((value) => (
-            <Card
-              key={value.title}
+          <div
+            className={cn(
+              "mt-6 flex flex-col gap-3 border-t pt-5 text-sm sm:flex-row sm:items-center sm:justify-between",
+              mode === "developer" ? "border-lilac-light/20" : "border-border"
+            )}
+          >
+            <span
               className={cn(
-                "p-5",
-                mode === "developer"
-                  ? "border-lilac-light/20 bg-primary-foreground/10 text-primary-foreground"
-                  : "bg-card"
+                "font-semibold",
+                mode === "developer" ? "text-lilac" : "text-graphite"
               )}
             >
-              <value.icon
-                aria-hidden="true"
-                className={cn(
-                  "h-6 w-6",
-                  mode === "developer" ? "text-lilac" : "text-lilac-dark"
-                )}
-              />
-              <h3 className="mt-5 text-lg font-semibold">{value.title}</h3>
-              <p
-                className={cn(
-                  "mt-3 text-sm leading-6",
-                  mode === "developer"
-                    ? "text-lilac-light/75"
-                    : "text-muted-foreground"
-                )}
-              >
-                {value.description}
-              </p>
-            </Card>
-          ))}
+              {profile.shortName}
+            </span>
+            <a
+              href="#work"
+              className={cn(
+                "inline-flex items-center gap-2 rounded-md font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark",
+                mode === "developer" ? "text-lilac-light" : "text-graphite-dark"
+              )}
+            >
+              View selected work
+              <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </div>
     </SectionContainer>

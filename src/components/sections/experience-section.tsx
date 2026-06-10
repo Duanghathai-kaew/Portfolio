@@ -1,17 +1,26 @@
 import { SectionContainer } from "@/components/layout/section-container";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { Badge } from "@/components/ui/badge";
 import { experienceItems } from "@/data/experience";
+import { profile } from "@/data/profile";
 
 export function ExperienceSection() {
   return (
     <SectionContainer id="experience">
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-        <SectionHeading
-          eyebrow="Experience"
-          title="A clean timeline prepared for real roles and contributions."
-          description="Each entry uses placeholder fields only. Replace them with verified experience when ready."
-        />
+        <div>
+          <SectionHeading
+            eyebrow="EXPERIENCE"
+            title="Design and development work across product interfaces, systems, and websites."
+          />
+          <button
+            type="button"
+            disabled
+            title={profile.resume.pendingReason}
+            className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lilac-dark disabled:cursor-not-allowed"
+          >
+            View Resume
+          </button>
+        </div>
         <div className="relative space-y-5">
           <div
             className="absolute bottom-8 left-4 top-8 w-px bg-border"
@@ -40,13 +49,6 @@ export function ExperienceSection() {
                 <p className="mt-4 text-sm leading-6 text-muted-foreground">
                   {item.description}
                 </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {item.tags.map((tag) => (
-                    <Badge key={tag} tone="lilac">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
               </div>
             </article>
           ))}

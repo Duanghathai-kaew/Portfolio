@@ -13,9 +13,8 @@ export function ProjectsSection({ mode }: ProjectsSectionProps) {
     <SectionContainer id="work">
       <div className="flex flex-col gap-10">
         <SectionHeading
-          eyebrow="Selected Work"
-          title="Placeholder projects shaped around problems, decisions, and delivery."
-          description="Each project card is ready for real case study content later. For now, the content stays generic and clearly labeled."
+          eyebrow="SELECTED WORK"
+          title="Projects where I combine UX thinking, interface design, and technical understanding to create practical digital products."
         />
         <div className="grid gap-5 lg:grid-cols-2">
           {projects.map((project) => (
